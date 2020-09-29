@@ -20,7 +20,8 @@
     "node": "12.11.1"
     },
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "web": "node ./src/index.js"
   },
   "eslintConfig": {
     "extends": "react-app"
