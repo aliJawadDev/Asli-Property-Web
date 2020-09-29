@@ -1,38 +1,69 @@
-.App {
-  text-align: center;
-}
+/* mainColor: "#1390cf"
+  mainLightColor: "#13c0cf"
+  mainDarkColor: "#096491" 
+  mainLightestColor #00aaff*/
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body{
+  background-image: url("./images/bg.png");
+  margin: 0px;
+  padding: 0px;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.MainCon{
   display: flex;
-  flex-direction: column;
-  align-items: center;
+}
+.Center{
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-self: center;
+  align-items: center;
+  height: 100vh;
+}
+.Card{
+  box-shadow: 0 0 30px black;
+  border: 1px solid #00aaff;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #00aaff;
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 300px;
+}
+.CardTitle{
   color: white;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.LogoText{
+  font-weight: bold;
+  font-style: italic;
+  font-size: 14px;
+  color:white;
+  margin-top: -10px;
 }
 
-.App-link {
-  color: #61dafb;
+.HoverEffect:hover{
+  cursor: pointer;
+  box-shadow: 0 0 20px black;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.removeDecoration:hover{
+  text-decoration: none;
+}
+@media only screen and (max-width: 950px) {
+  .Card{
+    width: 70%;
   }
-  to {
-    transform: rotate(360deg);
+}
+@media only screen and (max-width: 500px) {
+  .Card{
+    width: 95%;
   }
 }
