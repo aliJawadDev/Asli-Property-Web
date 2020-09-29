@@ -7,7 +7,7 @@ export default class Home extends Component {
       return (
         <div className="MainCon Center">
         <Link to="/Login" >
-        <h1>HI</h1>
+        <h1>Home</h1>
         </Link>
         </div>
       )

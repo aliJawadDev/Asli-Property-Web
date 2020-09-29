@@ -5,7 +5,6 @@ import Home from './screens/Home'
 import Login from './screens/Login'
 import Signup from './screens/Signup'
 
-
 export default class App extends Component {
   render() {
     return (

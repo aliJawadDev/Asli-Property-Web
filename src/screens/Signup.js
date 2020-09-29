@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import '../App.css'
 import MyBtn from '../Components/MyBtn'
 import RowText from '../Components/RowText'
 import MyInput from '../Components/MyInput'
-import {useLocation} from "react-router-dom";
 
 export default class Signup extends Component {
   constructor(Props) {
