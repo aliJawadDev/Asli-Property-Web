@@ -12,9 +12,6 @@ body{
   background-attachment: fixed;
   background-size: cover;
 }
-.MainCon{
-  display: flex;
-}
 .Center{
   display: flex;
   justify-content: center;
@@ -28,12 +25,15 @@ body{
   border-radius: 10px;
   padding: 20px;
   background-color: #00aaff;
-  display: flex;
   width: 50%;
+  display: flex;
   flex-direction: column;
+  min-width: 300px;
+}
+.FlexCenter{
+  display: flex;
   justify-content: center;
   align-items: center;
-  min-width: 300px;
 }
 .CardTitle{
   color: white;
@@ -41,29 +41,76 @@ body{
   margin-top: 10px;
   margin-bottom: 10px;
 }
-.LogoText{
-  font-weight: bold;
-  font-style: italic;
-  font-size: 14px;
-  color:white;
-  margin-top: -10px;
-}
-
 .HoverEffect:hover{
   cursor: pointer;
   box-shadow: 0 0 20px black;
 }
 
+.HoverPointer:hover{
+  cursor: pointer;
+}
+
 .removeDecoration:hover{
   text-decoration: none;
 }
-@media only screen and (max-width: 950px) {
+.navLink{
+  font-size: 20px;
+  transition: all;
+  transition-duration: 300ms;
+  display: flex;
+  flex:1;
+  justify-content: space-around;
+}
+.navExtraBtn{
+  display: none;
+}
+.navSearch{
+  flex:2;
+}
+.navSmLink{
+  font-size: 20px;
+  transition: all;
+  transition-duration: 300ms;
+}
+.navLink:hover{
+  font-size: 25px !important;
+}
+.navSmLink:hover{
+  font-size: 25px !important;
+}
+.navExtra{
+  display: none !important;
+}
+@media only screen and (max-width: 1000px) {
   .Card{
     width: 70%;
+  }
+  .navLink{
+    font-size: 20px;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .navLink{
+    display: none;
+  }
+  .navExtraBtn{
+    display: inline;
+  }
+  .navSearch{
+    flex: 5;
+  }
+  .navExtra{
+    display: block !important;
   }
 }
 @media only screen and (max-width: 500px) {
   .Card{
     width: 95%;
+  }
+  .navSearch{
+    flex: 4;
+  }
+  .navLogo{
+    max-width: 100px;
   }
 }

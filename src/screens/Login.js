@@ -1,10 +1,6 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import '../App.css'
-import '../css/Login.css'
-import MyBtn from '../Components/MyBtn'
-import RowText from '../Components/RowText'
-import MyInput from '../Components/MyInput'
+import { MyInput, MyBtn, RowText, MyLogoText, MyNav } from '../Components/MyComponents'
 
 export default class Login extends Component {
   constructor(Props) {
@@ -19,18 +15,18 @@ export default class Login extends Component {
   }
   render() {
     return (
-      <div className="MainCon Center">
-        <div className="Card">
-          <img src={require("../images/logo.png")} />
-          <h6 className="LogoText">Asli Property</h6>
+      <div className="Center">
+        <MyNav />
+        <div className="Card FlexCenter" style={{marginTop:50}}>
+          <MyLogoText text="Asli Property" imageSrc={require("../images/logo.png")} />
+
           <h1 className="CardTitle">Login</h1>
+          <MyInput label="Phone Number" placeHolder="Phone Number" name="phoneNo" onChange={(e) => this.handleChange(e)} />
+          <MyInput label="Password" inputType="password" placeHolder="Password" name="password" onChange={(e) => this.handleChange(e)} />
 
-          <MyInput label="Phone Number" placeHolder="Phone Number" name="phoneNo" onChange={(e) => this.handleChange(e)}/>
-          <MyInput label="Password" inputType="password" placeHolder="Password" name="password" onChange={(e) => this.handleChange(e)}/>
+          <MyBtn startColor="#13c0cf" className="HoverEffect" endColor="#1390cf" style={{ color: 'white' }} title="Login" onClick={() => console.log("NotHERE")} />
 
-          <MyBtn startColor="#13c0cf" endColor="#1390cf" style={{color:'white'}} title="Login" onClick={() =>console.log("NotHERE")}/>
-          
-          <RowText text="Don't have an account?" navigate={true} rightText="Sign up" toRoute="/Signup" LeftStyle={{color:"white"}} RightStyle={{fontWeight:'bold',marginLeft:10}}/>
+          <RowText text="Don't have an account?" navigate={true} rightText="Sign up" toRoute="/Signup" LeftStyle={{ color: "white" }} RightStyle={{ fontWeight: 'bold', marginLeft: 10 }} />
         </div>
       </div>
     )
