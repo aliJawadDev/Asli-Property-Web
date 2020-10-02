@@ -118,7 +118,7 @@ export function MyNav() {
             backgroundColor: "#00aaff",
             borderBottom: '1px solid black',
             padding: 5,
-            zIndex:0
+            zIndex:99
         },
         link: {
             color: 'white',
@@ -291,3 +291,36 @@ export function MyItemCard(Props){
         </div>
     )
 }
+
+export function ItemDetailRow(Props) {
+    let styles = {
+        container: {
+            display: 'flex',
+            flex:1,
+            flexDirection: 'row',
+            background: Props.bgDark ? "#1377a8" : 'transparent',
+            color:'white',
+            borderRadius:10,
+        },
+        iconStyle:{
+            marginRight:20,
+        },
+        titleStyle:{
+            fontWeight:'bold'
+        },
+        detailStyle:{
+            fontStyle:'italic'
+        }
+    };
+    return (
+        <div style={{...styles.container,...Props.containerStyle}} className={Props.containerClass}>
+            <div style={{display: 'flex',flexDirection:'row',flex:1}}>
+            <MyIcon iconClass={Props.iconClass} containerStyle={{display:'flex',justifyContent:'center',alignItems:'center',padding:0,margin:0}} icon iconStyle={{...styles.iconStyle,...Props.iconStyle}}/>
+            <h4 style={{...Props.titleStyle,...styles.titleStyle}} className={Props.titleClass} >{Props.title}</h4>
+            </div>
+            <div style={{flex:1}}>
+            <h4 style={{...Props.detailStyle,...styles.detailStyle}} className={Props.detailClass}>{Props.detail}</h4>
+            </div>
+        </div>
+    )
+};

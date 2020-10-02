@@ -1,10 +1,10 @@
 /* mainColor: "#1390cf"
   mainLightColor: "#13c0cf"
   mainDarkColor: "#096491" 
+  mainLightDarkColor: "#1377a8"
   mainLightestColor #00aaff*/
 
-
-body{
+body {
   background-image: url("./images/bg.png");
   margin: 0px;
   padding: 0px;
@@ -12,14 +12,16 @@ body{
   background-attachment: fixed;
   background-size: cover;
 }
-.Center{
+
+.Center {
   display: flex;
   justify-content: center;
   justify-self: center;
   align-items: center;
   height: 100vh;
 }
-.Card{
+
+.Card {
   box-shadow: 0 0 30px black;
   border: 1px solid #00aaff;
   border-radius: 10px;
@@ -30,87 +32,136 @@ body{
   flex-direction: column;
   min-width: 300px;
 }
-.FlexCenter{
+
+.FlexCenter {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.CardTitle{
+
+.CardTitle {
   color: white;
   margin-bottom: 20px;
   margin-top: 10px;
   margin-bottom: 10px;
 }
-.HoverEffect:hover{
+
+.HoverEffect:hover {
   cursor: pointer;
   box-shadow: 0 0 20px black;
 }
 
-.HoverPointer:hover{
+.HoverPointer:hover {
   cursor: pointer;
 }
 
-.removeDecoration:hover{
+.removeDecoration:hover {
   text-decoration: none;
 }
-.navLink{
+
+.navLink {
   font-size: 20px;
   transition: all;
   transition-duration: 300ms;
   display: flex;
-  flex:1;
+  flex: 1;
   justify-content: space-around;
 }
-.navExtraBtn{
+
+.navExtraBtn {
   display: none;
 }
-.navSearch{
-  flex:2;
+
+.navSearch {
+  flex: 2;
 }
-.navSmLink{
+
+.navSmLink {
   font-size: 20px;
   transition: all;
   transition-duration: 300ms;
 }
-.navLink:hover{
+
+.navLink:hover {
   font-size: 25px !important;
 }
-.navSmLink:hover{
+
+.navSmLink:hover {
   font-size: 25px !important;
 }
-.navExtra{
+
+.navExtra {
   display: none !important;
 }
+
+.imageSlider {
+  width: 60%;
+}
+
+.itemPreviewText {
+  font-size: 30px;
+}
+
+.ItemPreviewRow {
+  padding: 10px;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
 @media only screen and (max-width: 1000px) {
-  .Card{
+  .Card {
     width: 70%;
   }
-  .navLink{
+  .navLink {
     font-size: 20px;
   }
+  .imageSlider {
+    width: 80%;
+  }
 }
+
 @media only screen and (max-width: 800px) {
-  .navLink{
+  .navLink {
     display: none;
   }
-  .navExtraBtn{
+  .navExtraBtn {
     display: inline;
   }
-  .navSearch{
+  .navSearch {
     flex: 5;
   }
-  .navExtra{
+  .navExtra {
     display: block !important;
   }
+  .imageSlider {
+    width: 90%;
+  }
+  .itemPreviewText {
+    font-size: 28px;
+  }
 }
+
 @media only screen and (max-width: 500px) {
-  .Card{
+  .Card {
     width: 95%;
   }
-  .navSearch{
+  .navSearch {
     flex: 4;
   }
-  .navLogo{
+  .navLogo {
     max-width: 100px;
+  }
+  .imageSlider {
+    width: 100%;
+  }
+  .itemPreviewText {
+    font-size: 25px;
+  }
+  .ItemPreviewRow {
+    padding: 5px;
+    margin-right: 10px;
+    margin-left: 10px;
+    padding-left: 5%;
+    padding-right: 5%;
   }
 }
