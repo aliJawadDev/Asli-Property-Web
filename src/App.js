@@ -7,6 +7,7 @@ import Signup from './screens/Signup'
 import Profile from './screens/Profile'
 import EditProfile from './screens/EditProfile'
 import ItemPreview from './screens/ItemPreview'
+import MyAds from './screens/MyAds'
 
 
 export default class App extends Component {
@@ -19,7 +20,8 @@ export default class App extends Component {
         <Route path="/Signup" component={Signup} /> {/*Signup page*/}
         <Route path="/Profile" component={Profile} /> {/*Profile page*/}
         <Route path="/Profile/Edit" component={EditProfile} /> {/*Edit page*/}
-        <Route path="/Item/:id" component={ItemPreview} /> {/*Edit page*/}
+        <Route path="/Item/:id" component={ItemPreview} /> {/*ItemPreview page*/}
+        <Route path="/MyAds" component={MyAds} /> {/*MyAds page*/}
       </Switch>
       </Router>
     )

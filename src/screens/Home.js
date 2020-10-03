@@ -9,48 +9,56 @@ export default class Home extends Component {
     this.state = {
       data: [
         {
+          id:1,
           title: "Hi",
           price: "PKR:100",
           description: "Demo Desc",
           imageSrc: require('../images/ads/1.png'),
         },
         {
+          id:2,
           title: "Bye",
           price: "PKR:100",
           description: "Demo Desc",
           imageSrc: require('../images/ads/1.png'),
         },
         {
+          id:3,
           title: "Cya",
           price: "PKR:100",
           description: "Demo Desc",
           imageSrc: require('../images/ads/1.png'),
         },
         {
+          id:4,
           title: "Welcome",
           price: "PKR:100",
           description: "Demo Desc",
           imageSrc: require('../images/ads/1.png'),
         },
         {
+          id:5,
           title: "Hi1",
           price: "PKR:100",
           description: "Demo Desc",
           imageSrc: require('../images/ads/1.png'),
         },
         {
+          id:6,
           title: "Bye2",
           price: "PKR:100",
           description: "Demo Desc",
           imageSrc: require('../images/ads/1.png'),
         },
         {
+          id:7,
           title: "Cya3",
           price: "PKR:100",
           description: "Demo Desc",
           imageSrc: require('../images/ads/1.png'),
         },
         {
+          id:8,
           title: "Welcome4",
           price: "PKR:100",
           description: "Demo Desc",
@@ -62,7 +70,7 @@ export default class Home extends Component {
   render() {
     let rowContents = [];
     const contents = this.state.data.reduce((acc, item, i) => {
-      rowContents.push(<MyItemCard containerStyle={{ width: 18 + "em" }} title={item.title} price={item.price} description={item.description} imageSrc={item.imageSrc} />);
+      rowContents.push(<MyItemCard containerStyle={{ width: 18 + "em" }} title={item.title} toRoute={"/Item/"+item.id} price={item.price} description={item.description} imageSrc={item.imageSrc} />);
       if (i % 4 === 3) {
         acc.push(<div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>{rowContents}</div>);
         rowContents = [];

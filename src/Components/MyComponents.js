@@ -180,7 +180,7 @@ export function MyNav() {
             <div style={styles.linkCon}>
 
             <MyNavLink to="/Profile" linkClass="removeDecoration navLink" linkText="Sell" iconClass="fa fa-camera" subConStyle={styles.navLinkSubCon} iconStyle={{marginBottom:-5}}/>
-            <MyNavLink to="/Profile" linkClass="removeDecoration navLink" linkText="My Ads" iconClass="fa fa-bars" subConStyle={styles.navLinkSubCon} iconStyle={{marginBottom:-5}}/>
+            <MyNavLink to="/MyAds" linkClass="removeDecoration navLink" linkText="My Ads" iconClass="fa fa-bars" subConStyle={styles.navLinkSubCon} iconStyle={{marginBottom:-5}}/>
             <MyNavLink to="/Profile" linkClass="removeDecoration navLink" linkText="Profile" iconClass="fa fa-user" subConStyle={styles.navLinkSubCon} iconStyle={{marginBottom:-5}}/>
 
             <MyIcon iconClass={moreShown ? "fa fa-times HoverPointer navExtraBtn":"fa fa-bars HoverPointer navExtraBtn"} iconStyle={{color:'white',fontSize:40}} onClick={()=>ToggleShown(!moreShown)}/>
@@ -189,7 +189,7 @@ export function MyNav() {
             {moreShown ? 
             <div className="navExtra" style={{display:'flex',flexDirection:'column', alignItems:'center',justifyContent:'center'}}>
             <MyNavLink to="/Profile" linkClass="removeDecoration navSmLink" linkText="Sell" iconClass="fa fa-camera" subConStyle={styles.smNavLinkSubCon} iconStyle={{marginRight:5}}/>
-            <MyNavLink to="/Profile" linkClass="removeDecoration navSmLink" linkText="My Ads" iconClass="fa fa-bars" subConStyle={styles.smNavLinkSubCon} iconStyle={{marginRight:5}}/>
+            <MyNavLink to="/MyAds" linkClass="removeDecoration navSmLink" linkText="My Ads" iconClass="fa fa-bars" subConStyle={styles.smNavLinkSubCon} iconStyle={{marginRight:5}}/>
             <MyNavLink to="/Profile" linkClass="removeDecoration navSmLink" linkText="Profile" iconClass="fa fa-user" subConStyle={styles.smNavLinkSubCon} iconStyle={{marginRight:5}}/>
             </div> : null}
         </div>
@@ -283,8 +283,8 @@ export function MyItemCard(Props){
         <h6 style={{...styles.priceStyle,...Props.priceStyle}}>{Props.price}</h6>
         <h5 style={{...styles.descStyle,...Props.descStyle}}>{Props.description}</h5>
         <div style={{display:'flex',alignItems:'center',justifyContent:'center'}}>
-        <Link to="/Item/1" className="removeDecoration" style={{width:60+"%"}}>
-        <MyBtn title="More" className="HoverEffect" style={{color:'white'}}/>
+        <Link to={Props.toRoute} className="removeDecoration" style={{width:60+"%"}}>
+        <MyBtn title="More" disableOnClick className="HoverEffect" style={{color:'white'}}/>
         </Link>
         </div>
         </div>

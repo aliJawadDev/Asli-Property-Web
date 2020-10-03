@@ -28,8 +28,7 @@ export default class Profile extends Component {
                         <MyBtn className="HoverEffect" style={{ borderRadius: 360, margin: 0, color: 'white', width: 50, height: 50 }} title={<MyIcon iconClass="fa fa-heart" containerStyle={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} iconStyle={{ color: 'white', fontSize: 30, paddingTop: 4 }} />} />
                     </div>
 
-
-                    <ItemDetailRow containerClass="ItemPreviewRow" title="Property ID" detail="01234567890" bgDark iconClass="fa fa-home itemPreviewText" titleClass="itemPreviewText" detailClass="itemPreviewText" />
+                    <ItemDetailRow containerClass="ItemPreviewRow" title="Property ID" detail={this.props.match.params.id} bgDark iconClass="fa fa-home itemPreviewText" titleClass="itemPreviewText" detailClass="itemPreviewText" />
                     <ItemDetailRow containerClass="ItemPreviewRow" title="Type" detail="House" iconClass="fa fa-building itemPreviewText" titleClass="itemPreviewText" detailClass="itemPreviewText" />
                     <ItemDetailRow containerClass="ItemPreviewRow" title="Price" detail="PKR 10 Lac" bgDark iconClass="fa fa-money itemPreviewText" titleClass="itemPreviewText" detailClass="itemPreviewText" />
                     <ItemDetailRow containerClass="ItemPreviewRow" title="Area" detail="100 feet" iconClass="fa fa-text-height itemPreviewText" titleClass="itemPreviewText" detailClass="itemPreviewText" />
