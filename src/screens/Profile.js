@@ -46,7 +46,7 @@ export default class Profile extends Component {
                         </div>
                         </div>
                         <div style={{justifyContent:'end'}}>
-                        <Link className="removeDecoration" to="/Profile/Edit" style={{color:'white'}}>
+                        <Link className="removeDecoration" to="/Edit/Profile" style={{color:'white'}}>
                         <MyBtn className="HoverEffect" disableOnClick={true} style={{padding:10}} title={<MyIcon iconClass="fa fa-edit" iconStyle={{fontSize:30}} />}/>
                         </Link>
                         </div>

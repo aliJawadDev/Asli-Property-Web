@@ -72,17 +72,29 @@ export default class Home extends Component {
     const contents = this.state.data.reduce((acc, item, i) => {
       rowContents.push(<MyItemCard containerStyle={{ width: 18 + "em" }} title={item.title} toRoute={"/Item/"+item.id} price={item.price} description={item.description} imageSrc={item.imageSrc} />);
       if (i % 4 === 3) {
-        acc.push(<div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>{rowContents}</div>);
+        acc.push(<div className="lg-home-cards-con" style={{ flexDirection: 'row', justifyContent: 'space-around' }}>{rowContents}</div>);
         rowContents = [];
       }
       return acc;
     }, [])
-    contents.push(<div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>{rowContents}</div>);
+    contents.push(<div className="lg-home-cards-con" style={{  flexDirection: 'row', justifyContent: 'space-around' }}>{rowContents}</div>);
+
+    let smRowContents = [];
+    const smContents = this.state.data.reduce((acc, item, i) => {
+      smRowContents.push(<MyItemCard containerStyle={{ width: 18 + "em" }} title={item.title} toRoute={"/Item/"+item.id} price={item.price} description={item.description} imageSrc={item.imageSrc} />);
+      if (i % 2 === 1) {
+        acc.push(<div className="sm-home-cards-con" style={{  flexDirection: 'row', justifyContent: 'space-around' }}>{smRowContents}</div>);
+        smRowContents = [];
+      }
+      return acc;
+    }, [])
+    smContents.push(<div className="sm-home-cards-con" style={{ flexDirection: 'row', justifyContent: 'space-around' }}>{smRowContents}</div>);
 
     return (
       <div style={{ paddingTop: 100 }}>
         <MyNav/>
         {contents}
+        {smContents}
       </div>
     )
   }

@@ -108,6 +108,14 @@ body {
   padding-right: 5%;
 }
 
+.lg-home-cards-con{
+  display: flex;
+}
+
+.sm-home-cards-con{
+  display: none;
+}
+
 @media only screen and (max-width: 1000px) {
   .Card {
     width: 70%;
@@ -117,6 +125,12 @@ body {
   }
   .imageSlider {
     width: 80%;
+  }
+  .lg-home-cards-con{
+    display: none;
+  }
+  .sm-home-cards-con{
+    display: flex;
   }
 }
 
