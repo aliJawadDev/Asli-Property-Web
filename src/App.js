@@ -8,6 +8,7 @@ import Profile from './screens/Profile'
 import EditProfile from './screens/EditProfile'
 import ItemPreview from './screens/ItemPreview'
 import MyAds from './screens/MyAds'
+import Sell from './screens/Sell'
 
 
 export default class App extends Component {
@@ -22,6 +23,7 @@ export default class App extends Component {
         <Route path="/Edit/Profile" component={EditProfile} /> {/*Edit page*/}
         <Route path="/Item/:id" component={ItemPreview} /> {/*ItemPreview page*/}
         <Route path="/MyAds" component={MyAds} /> {/*MyAds page*/}
+        <Route path="/Sell" component={Sell} /> {/*Sell page*/}
       </Switch>
       </Router>
     )

@@ -116,6 +116,91 @@ body {
   display: none;
 }
 
+.sellCon{
+  width: 50%;
+  margin: auto;
+}
+
+
+
+
+.radioContainer {
+  display: flex;
+  position: relative;
+  padding-left: 30px;
+  margin:10px;
+  margin-left: 30px;
+  cursor: pointer;
+  font-size: 15px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  align-items: center;
+  color: white;
+  align-items: center;
+  height: 20px;
+  font-weight: bold;
+}
+
+/* Hide the browser's default radio button */
+.radioContainer input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+  border: 3px solid  white;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+}
+
+/* On mouse-over, add a grey background color */
+.radioContainer:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.radioContainer input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.radioContainer input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.radioContainer .checkmark:after {
+ 	top: 3px;
+	left: 3px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+
+
+
+
+
+
 @media only screen and (max-width: 1000px) {
   .Card {
     width: 70%;
@@ -131,6 +216,10 @@ body {
   }
   .sm-home-cards-con{
     display: flex;
+  }
+  .sellCon{
+    width: 75%;
+    margin: auto;
   }
 }
 
@@ -177,5 +266,9 @@ body {
     margin-left: 10px;
     padding-left: 5%;
     padding-right: 5%;
+  }
+  .sellCon{
+    width: 90%;
+    margin: auto;
   }
 }
