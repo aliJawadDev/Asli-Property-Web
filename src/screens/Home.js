@@ -1,89 +1,44 @@
 import React, { Component } from 'react'
 import '../App.css'
 import { MyNav, MyItemCard } from '../Components/MyComponents'
-
+import axios from 'axios';
+import LoadingOverlay from 'react-loading-overlay';
 
 export default class Home extends Component {
   constructor(Props) {
     super(Props);
     this.state = {
-      data: [
-        {
-          id:1,
-          title: "Hi",
-          price: "PKR:100",
-          description: "Demo Desc",
-          imageSrc: require('../images/ads/1.png'),
-        },
-        {
-          id:2,
-          title: "Bye",
-          price: "PKR:100",
-          description: "Demo Desc",
-          imageSrc: require('../images/ads/1.png'),
-        },
-        {
-          id:3,
-          title: "Cya",
-          price: "PKR:100",
-          description: "Demo Desc",
-          imageSrc: require('../images/ads/1.png'),
-        },
-        {
-          id:4,
-          title: "Welcome",
-          price: "PKR:100",
-          description: "Demo Desc",
-          imageSrc: require('../images/ads/1.png'),
-        },
-        {
-          id:5,
-          title: "Hi1",
-          price: "PKR:100",
-          description: "Demo Desc",
-          imageSrc: require('../images/ads/1.png'),
-        },
-        {
-          id:6,
-          title: "Bye2",
-          price: "PKR:100",
-          description: "Demo Desc",
-          imageSrc: require('../images/ads/1.png'),
-        },
-        {
-          id:7,
-          title: "Cya3",
-          price: "PKR:100",
-          description: "Demo Desc",
-          imageSrc: require('../images/ads/1.png'),
-        },
-        {
-          id:8,
-          title: "Welcome4",
-          price: "PKR:100",
-          description: "Demo Desc",
-          imageSrc: require('../images/ads/1.png'),
-        },
-      ]
+      data: [],
+      loading:true
     }
+  }
+  componentDidMount() {
+    axios.get(`https://property12.herokuapp.com/api/banner/get`)
+      .then(response => {
+        this.setState({ data: response.data.data })
+        this.setState({loading:false})
+      }).catch(error => {
+        if (error) {
+        }
+      });
   }
   render() {
     let rowContents = [];
     const contents = this.state.data.reduce((acc, item, i) => {
-      rowContents.push(<MyItemCard containerStyle={{ width: 18 + "em" }} title={item.title} toRoute={"/Item/"+item.id} price={item.price} description={item.description} imageSrc={item.imageSrc} />);
+      rowContents.push(<MyItemCard containerStyle={{ width: 18 + "em" }} title={item.title} toRoute={"/Item/" + item._id} price={item.price} description={item.description} imageSrc={item.image[0]} />);
       if (i % 4 === 3) {
         acc.push(<div className="lg-home-cards-con" style={{ flexDirection: 'row', justifyContent: 'space-around' }}>{rowContents}</div>);
         rowContents = [];
       }
       return acc;
     }, [])
-    contents.push(<div className="lg-home-cards-con" style={{  flexDirection: 'row', justifyContent: 'space-around' }}>{rowContents}</div>);
+    contents.push(<div className="lg-home-cards-con" style={{ flexDirection: 'row', justifyContent: 'space-around' }}>{rowContents}</div>);
 
     let smRowContents = [];
     const smContents = this.state.data.reduce((acc, item, i) => {
-      smRowContents.push(<MyItemCard containerStyle={{ width: 18 + "em" }} title={item.title} toRoute={"/Item/"+item.id} price={item.price} description={item.description} imageSrc={item.imageSrc} />);
+      smRowContents.push(<MyItemCard containerStyle={{ width: 18 + "em" }} title={item.title} toRoute={"/Item/" + item._id} price={item.price} description={item.description} imageSrc={item.image[0]} />);
       if (i % 2 === 1) {
-        acc.push(<div className="sm-home-cards-con" style={{  flexDirection: 'row', justifyContent: 'space-around' }}>{smRowContents}</div>);
+        acc.push(<div className="sm-home-cards-con" style={{ flexDirection: 'row', justifyContent: 'space-around' }}>{smRowContents}</div>);
         smRowContents = [];
       }
       return acc;
@@ -91,11 +46,16 @@ export default class Home extends Component {
     smContents.push(<div className="sm-home-cards-con" style={{ flexDirection: 'row', justifyContent: 'space-around' }}>{smRowContents}</div>);
 
     return (
-      <div style={{ paddingTop: 100 }}>
-        <MyNav/>
+      <LoadingOverlay
+        active={this.state.loading}
+        spinner
+        text='Fetching Data'>
+      <div style={{ paddingTop: 80,minHeight:100+"vh" }}>
+        <MyNav />
         {contents}
         {smContents}
       </div>
+      </LoadingOverlay>
     )
   }
 }

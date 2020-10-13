@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { MyBtn, MyIcon, MyNav } from '../Components/MyComponents'
 import axios from 'axios';
 import { ToastsContainer, ToastsStore } from 'react-toasts';
+import LoadingOverlay from 'react-loading-overlay';
 
 export default class Profile extends Component {
     constructor(Props) {
@@ -65,6 +66,10 @@ export default class Profile extends Component {
             },
         };
         return (
+            <LoadingOverlay
+            active={this.state.user.name ? false : true}
+            spinner
+            text='Fetching User'>
             <div className="Center" style={{ paddingTop: 50 }}>
                 <MyNav />
 
@@ -93,6 +98,7 @@ export default class Profile extends Component {
                     </div>
                 </div>
             </div>
+            </LoadingOverlay>
         )
     }
 }
