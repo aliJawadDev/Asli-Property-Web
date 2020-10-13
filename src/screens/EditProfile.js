@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import '../App.css'
 import { MyInput, MyBtn, MyLogoText, MyNav, MyIcon } from '../Components/MyComponents'
+import axios from 'axios';
+import { ToastsContainer, ToastsStore } from 'react-toasts';
+
 
 export default class EditProfile extends Component {
     constructor(Props) {
@@ -11,18 +14,41 @@ export default class EditProfile extends Component {
             password: "",
             confirmPassword: "",
             email: "",
+            user: {},
         }
     }
+    componentDidMount() {
+        var user = JSON.parse(localStorage.getItem('User'));
+        var id = user._id;
+        this.getUser(id);
+    }
+    getUser(id) {
+        axios.get(`https://property12.herokuapp.com/api/user/get/` + id)
+            .then(response => {
+                if (response.data.statusCode === 200) {
+                    var data = response.data.data;
+                    this.setState({ user: data })
+                }
+            }).catch(error => {
+                if (error) {
+                    ToastsStore.error("Error\nCould not find user!");
+                }
+            });
+    }
     handleChange(e) {
-        this.setState({ [e.target.name]: [e.target.value] })
+        var val = e.target.value
+        this.setState({ [e.target.name]: val })
     }
     render() {
         return (
-            <div className="Center" style={{ paddingTop:50 }}>
+            <div className="Center" style={{ paddingTop: 50 }}>
                 <MyNav />
+
+                <ToastsContainer store={ToastsStore} />
+
                 <div className="Card FlexCenter">
-                    <MyBtn className="HoverEffect" onClick={()=>this.props.history.goBack()} style={{padding:0,width:70,alignSelf:'start',color:'white'}} title={<MyIcon iconClass="fa fa-long-arrow-left" iconStyle={{fontSize:40}}/>}/>
-                    <MyLogoText text="Asli Property" containerStyle={{marginTop:-50}} imageSrc={require("../images/logo.png")} />
+                    <MyBtn className="HoverEffect" onClick={() => this.props.history.goBack()} style={{ padding: 0, width: 70, alignSelf: 'start', color: 'white' }} title={<MyIcon iconClass="fa fa-long-arrow-left" iconStyle={{ fontSize: 40 }} />} />
+                    <MyLogoText text="Asli Property" containerStyle={{ marginTop: -50 }} imageSrc={require("../images/logo.png")} />
                     <h1 className="CardTitle">Edit Profile</h1>
                     <MyInput label="Name" labelStyle={{ marginTop: -7 }} inputStyle={{ padding: 7, marginTop: -7 }} placeHolder="Name" name="name" onChange={(e) => this.handleChange(e)} />
                     <MyInput label="CNIC" labelStyle={{ marginTop: -7 }} inputStyle={{ padding: 7, marginTop: -7 }} placeHolder="CNIC" name="cnic" onChange={(e) => this.handleChange(e)} />

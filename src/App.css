@@ -121,7 +121,19 @@ body {
   margin: auto;
 }
 
+.labelStyle{
+  color:red;
+  margin-bottom:-8px;
+  font-size:12px;
+  font-weight: bold;
+}
 
+.labelStyleGood{
+  color:lime;
+  margin-bottom:-10px;
+  font-size:14px;
+  font-weight: bold;
+}
 
 
 .radioContainer {

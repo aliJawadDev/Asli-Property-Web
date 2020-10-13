@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
 
 
@@ -30,10 +30,10 @@ export function MyInput(Props) {
     return (
         <div style={{ ...styles.container, ...Props.containerStyle }}>
             {Props.label ? <h6 style={{ ...styles.label, ...Props.labelStyle }}>{Props.label}</h6> : null}
-            {Props.textarea ? 
-            <textarea className={Props.inputClass} style={{ ...styles.input, ...Props.inputStyle }} name={Props.name} onChange={Props.onChange} placeholder={Props.placeHolder} />
-            :
-            <input className={Props.inputClass} accept={Props.imageOnly? "image/*":null} multiple={Props.multiple} type={Props.inputType ? Props.inputType : "text"} style={{ ...styles.input, ...Props.inputStyle }} name={Props.name} onChange={Props.onChange} placeholder={Props.placeHolder} />}
+            {Props.textarea ?
+                <textarea className={Props.inputClass} style={{ ...styles.input, ...Props.inputStyle }} name={Props.name} onChange={Props.onChange} placeholder={Props.placeHolder} />
+                :
+                <input className={Props.inputClass} accept={Props.imageOnly ? "image/*" : null} multiple={Props.multiple} type={Props.inputType ? Props.inputType : "text"} style={{ ...styles.input, ...Props.inputStyle }} name={Props.name} onChange={Props.onChange} placeholder={Props.placeHolder} />}
         </div>
     )
 };
@@ -168,32 +168,38 @@ export function MyNav() {
         }
     };
     const [moreShown, ToggleShown] = useState(false);
+    const [user, setUser] = useState(null);
+    useEffect(() => {
+        setUser(JSON.parse(localStorage.getItem('User')))
+    }, []);
     return (
-        <div style={styles.container}>
-            <div style={styles.subCon}>
-                <Link to="/">
-                    <img style={styles.logo} className="navLogo" src={require("../images/logo.png")} alt="Logo" />
-                </Link>
-                <div className="navSearch" style={{ display: 'flex', flexDirection: 'row' }}>
-                    <MyInput name="Search" placeHolder="Search" inputStyle={{ margin: 0, padding: 5, borderRadius: 10, borderTopRightRadius: 0, borderBottomRightRadius: 0 }} />
-                    <MyBtn className="HoverEffect" style={{ borderLeftWidth: 0, borderRadius: 0, margin: 0, color: 'white', width: 50, padding: 2, textAlign: 'center', borderTopRightRadius: 10, borderBottomRightRadius: 10 }} title={<MyIcon iconClass="fa fa-search" iconStyle={{ color: 'white', fontSize: 20 }} />} />
-                </div>
-                <div style={styles.linkCon}>
+    <div style={styles.container}>
 
-                    <MyNavLink to="/Sell" linkClass="removeDecoration navLink" linkText="Sell" iconClass="fa fa-camera" subConStyle={styles.navLinkSubCon} iconStyle={{ marginBottom: -5 }} />
-                    <MyNavLink to="/MyAds" linkClass="removeDecoration navLink" linkText="My Ads" iconClass="fa fa-bars" subConStyle={styles.navLinkSubCon} iconStyle={{ marginBottom: -5 }} />
-                    <MyNavLink to="/Profile" linkClass="removeDecoration navLink" linkText="Profile" iconClass="fa fa-user" subConStyle={styles.navLinkSubCon} iconStyle={{ marginBottom: -5 }} />
-
-                    <MyIcon iconClass={moreShown ? "fa fa-times HoverPointer navExtraBtn" : "fa fa-bars HoverPointer navExtraBtn"} iconStyle={{ color: 'white', fontSize: 40 }} onClick={() => ToggleShown(!moreShown)} />
-                </div>
+        <div style={styles.subCon}>
+            <Link to="/">
+                <img style={styles.logo} className="navLogo" src={require("../images/logo.png")} alt="Logo" />
+            </Link>
+            <div className="navSearch" style={{ display: 'flex', flexDirection: 'row' }}>
+                <MyInput name="Search" placeHolder="Search" inputStyle={{ margin: 0, padding: 5, borderRadius: 10, borderTopRightRadius: 0, borderBottomRightRadius: 0 }} />
+                <MyBtn className="HoverEffect" style={{ borderLeftWidth: 0, borderRadius: 0, margin: 0, color: 'white', width: 50, padding: 2, textAlign: 'center', borderTopRightRadius: 10, borderBottomRightRadius: 10 }} title={<MyIcon iconClass="fa fa-search" iconStyle={{ color: 'white', fontSize: 20 }} />} />
             </div>
-            {moreShown ?
-                <div className="navExtra" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                    <MyNavLink to="/Sell" linkClass="removeDecoration navSmLink" linkText="Sell" iconClass="fa fa-camera" subConStyle={styles.smNavLinkSubCon} iconStyle={{ marginRight: 5 }} />
-                    <MyNavLink to="/MyAds" linkClass="removeDecoration navSmLink" linkText="My Ads" iconClass="fa fa-bars" subConStyle={styles.smNavLinkSubCon} iconStyle={{ marginRight: 5 }} />
-                    <MyNavLink to="/Profile" linkClass="removeDecoration navSmLink" linkText="Profile" iconClass="fa fa-user" subConStyle={styles.smNavLinkSubCon} iconStyle={{ marginRight: 5 }} />
-                </div> : null}
+            <div style={styles.linkCon}>
+
+                <MyNavLink to="/Sell" linkClass="removeDecoration navLink" linkText="Sell" iconClass="fa fa-camera" subConStyle={styles.navLinkSubCon} iconStyle={{ marginBottom: -5 }} />
+                <MyNavLink to="/MyAds" linkClass="removeDecoration navLink" linkText="My Ads" iconClass="fa fa-bars" subConStyle={styles.navLinkSubCon} iconStyle={{ marginBottom: -5 }} />
+                
+                <MyNavLink to={user ? "/Profile": "/Login"} linkClass="removeDecoration navLink" linkText="Profile" iconClass="fa fa-user" subConStyle={styles.navLinkSubCon} iconStyle={{ marginBottom: -5 }} />
+
+                <MyIcon iconClass={moreShown ? "fa fa-times HoverPointer navExtraBtn" : "fa fa-bars HoverPointer navExtraBtn"} iconStyle={{ color: 'white', fontSize: 40 }} onClick={() => ToggleShown(!moreShown)} />
+            </div>
         </div>
+        {moreShown ?
+            <div className="navExtra" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                <MyNavLink to="/Sell" linkClass="removeDecoration navSmLink" linkText="Sell" iconClass="fa fa-camera" subConStyle={styles.smNavLinkSubCon} iconStyle={{ marginRight: 5 }} />
+                <MyNavLink to="/MyAds" linkClass="removeDecoration navSmLink" linkText="My Ads" iconClass="fa fa-bars" subConStyle={styles.smNavLinkSubCon} iconStyle={{ marginRight: 5 }} />
+                <MyNavLink to={user ? "/Profile": "/Login"} linkClass="removeDecoration navSmLink" linkText="Profile" iconClass="fa fa-user" subConStyle={styles.smNavLinkSubCon} iconStyle={{ marginRight: 5 }} />
+            </div> : null}
+    </div>
     )
 };
 
