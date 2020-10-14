@@ -36,7 +36,7 @@ export default class Login extends Component {
     if (user) {
       ToastsStore.success("Logging in!");
       setTimeout(() => {
-        this.props.history.push("/");
+        this.props.history.push("/Profile");
         }, 1000);
     }
   }

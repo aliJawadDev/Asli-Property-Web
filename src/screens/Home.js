@@ -2,14 +2,12 @@ import React, { Component } from 'react'
 import '../App.css'
 import { MyNav, MyItemCard } from '../Components/MyComponents'
 import axios from 'axios';
-import LoadingOverlay from 'react-loading-overlay';
 
 export default class Home extends Component {
   constructor(Props) {
     super(Props);
     this.state = {
       data: [],
-      loading:true
     }
   }
   componentDidMount() {
@@ -46,16 +44,11 @@ export default class Home extends Component {
     smContents.push(<div className="sm-home-cards-con" style={{ flexDirection: 'row', justifyContent: 'space-around' }}>{smRowContents}</div>);
 
     return (
-      <LoadingOverlay
-        active={this.state.loading}
-        spinner
-        text='Fetching Data'>
-      <div style={{ paddingTop: 80,minHeight:100+"vh" }}>
+      <div style={{ paddingTop: 80 }}>
         <MyNav />
         {contents}
         {smContents}
       </div>
-      </LoadingOverlay>
     )
   }
 }

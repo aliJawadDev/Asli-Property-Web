@@ -185,8 +185,8 @@ export function MyNav() {
             </div>
             <div style={styles.linkCon}>
 
-                <MyNavLink to="/Sell" linkClass="removeDecoration navLink" linkText="Sell" iconClass="fa fa-camera" subConStyle={styles.navLinkSubCon} iconStyle={{ marginBottom: -5 }} />
-                <MyNavLink to="/MyAds" linkClass="removeDecoration navLink" linkText="My Ads" iconClass="fa fa-bars" subConStyle={styles.navLinkSubCon} iconStyle={{ marginBottom: -5 }} />
+                <MyNavLink to={user ? "/Sell": "/Login"} linkClass="removeDecoration navLink" linkText="Sell" iconClass="fa fa-camera" subConStyle={styles.navLinkSubCon} iconStyle={{ marginBottom: -5 }} />
+                <MyNavLink to={user ? "/MyAds": "/Login"} linkClass="removeDecoration navLink" linkText="My Ads" iconClass="fa fa-bars" subConStyle={styles.navLinkSubCon} iconStyle={{ marginBottom: -5 }} />
                 
                 <MyNavLink to={user ? "/Profile": "/Login"} linkClass="removeDecoration navLink" linkText="Profile" iconClass="fa fa-user" subConStyle={styles.navLinkSubCon} iconStyle={{ marginBottom: -5 }} />
 
@@ -195,8 +195,8 @@ export function MyNav() {
         </div>
         {moreShown ?
             <div className="navExtra" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                <MyNavLink to="/Sell" linkClass="removeDecoration navSmLink" linkText="Sell" iconClass="fa fa-camera" subConStyle={styles.smNavLinkSubCon} iconStyle={{ marginRight: 5 }} />
-                <MyNavLink to="/MyAds" linkClass="removeDecoration navSmLink" linkText="My Ads" iconClass="fa fa-bars" subConStyle={styles.smNavLinkSubCon} iconStyle={{ marginRight: 5 }} />
+                <MyNavLink to={user ? "/Sell": "/Login"} linkClass="removeDecoration navSmLink" linkText="Sell" iconClass="fa fa-camera" subConStyle={styles.smNavLinkSubCon} iconStyle={{ marginRight: 5 }} />
+                <MyNavLink to={user ? "/MyAds": "/Login"} linkClass="removeDecoration navSmLink" linkText="My Ads" iconClass="fa fa-bars" subConStyle={styles.smNavLinkSubCon} iconStyle={{ marginRight: 5 }} />
                 <MyNavLink to={user ? "/Profile": "/Login"} linkClass="removeDecoration navSmLink" linkText="Profile" iconClass="fa fa-user" subConStyle={styles.smNavLinkSubCon} iconStyle={{ marginRight: 5 }} />
             </div> : null}
     </div>
